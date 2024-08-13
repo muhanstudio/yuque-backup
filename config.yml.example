@@ -1,0 +1,6 @@
+token: "语雀token"
+book_id: "知识库ID"
+headers:
+  Cookie: "your_cookie_here"
+  X-CSRF-Token: "your_csrf_token_here"
+  X-Login: "your_login_here"
