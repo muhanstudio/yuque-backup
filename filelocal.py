@@ -21,7 +21,7 @@ def download_file(url, dest_folder):
 
 def extract_attachment_urls(md_content):
     # Regular expression to find all URLs in the markdown file
-    url_pattern = re.compile(r'\[.*?\]\((https?://.*?)\)')
+    url_pattern = re.compile(r'\[.*?]\((https?://.*?)\)')
     urls = url_pattern.findall(md_content)
     return urls
 
