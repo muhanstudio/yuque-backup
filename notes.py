@@ -112,7 +112,7 @@ if response.status_code == 200:
         # 在文件开头添加created_at和tags
         tags_str = ', '.join(tags)
         html_header = f"<div><strong>Created At:</strong> {created_at}<br><strong>Tags:</strong> {tags_str}</div><hr>"
-        md_header = f"**Created At:** {created_at}\n\n**Tags:** {tags_str}\n\n---\n\n"
+        md_header = f"---\n\nCreated At: {created_at}\n\nTags: {tags_str}\n\n---\n\n"
 
         # 创建文件名，使用note的id
         html_file_name = f"notes/html/note_{note['id']}.html"

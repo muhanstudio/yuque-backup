@@ -33,7 +33,7 @@ def handle_button1():
 
 @register_handler('添加引用')
 def handle_button2():
-    subprocess.run(['python', 'ref.py'])
+    subprocess.run(['python', 'refadd.py'])
 
 # 其他按钮处理函数类似
 
