@@ -5,3 +5,4 @@ archives.zip
 archives_local.zip
 notes
 .idea
+__pycache__
