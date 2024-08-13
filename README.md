@@ -1,0 +1,13 @@
+# yuque-backup
+
+## 备份
+
+修改配置文件config.yml.example为config.yml
+
+修改配置文件config.yml中的token和book_id
+
+backup.py
+
+## 添加引用(适用于转移文档)
+
+运行ref.py
