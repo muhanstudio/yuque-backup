@@ -1,15 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>语雀后备箱</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>语雀备份工具</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 30px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;  /* 圆角 */
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s, transform 0.2s;  /* 动画效果 */
+        }
+
+        button:hover {
+            background-color: #0056b3;  /* 悬停效果 */
+            transform: scale(1.05);  /* 放大效果 */
+        }
+
+        button:active {
+            transform: scale(0.95);  /* 点击时缩小效果 */
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 600px) {
+            button {
+                width: 100%;
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>语雀后备箱</h1>
-    <form action="{{ url_for('handle_button') }}" method="post">
-        {% for button in buttons %}
-            <input type="submit" name="button_id" value="{{ button }}">
-        {% endfor %}
-    </form>
+    <h1>欢迎使用语雀备份工具</h1>
+    <p>请根据需要点击下面的按钮运行相应功能：</p>
+
+    <div>
+        <button onclick="location.href='/backup'">备份</button>
+        <button onclick="location.href='/refadd'">添加引用</button>
+        <button onclick="location.href='/reflocal'">文档链接本地化</button>
+        <button onclick="location.href='/notes'">输出小记</button>
+        <button onclick="location.href='/delete'">删除导出</button>
+        <button onclick="location.href='/filelocal'">资源本地化</button>
+        <button onclick="location.href='/archives'">压缩导出</button>
+    </div>
 </body>
 </html>

@@ -1,41 +1,62 @@
-import subprocess
-
-from flask import Flask, render_template, request
+from flask import Flask, render_template, redirect, url_for
+import subprocess  # 用于运行外部脚本
 
 app = Flask(__name__)
 
-# 定义一个字典来存储按钮对应的处理函数
-button_handlers = {}
-
-def register_handler(button_id):
-    def decorator(func):
-        button_handlers[button_id] = func
-        return func
-    return decorator
 
 @app.route('/')
 def index():
-    # 渲染主页
-    return render_template('index.html', buttons=button_handlers.keys())
+    return render_template('index.html')
 
-@app.route('/handle_button', methods=['POST'])
-def handle_button():
-    button_id = request.form['button_id']
-    if button_id in button_handlers:
-        handler = button_handlers[button_id]
-        handler()
-    return "操作成功"
 
-# 示例：注册按钮处理函数
-@register_handler('备份')
-def handle_button1():
-    subprocess.run(['python', 'backup.py'])
+@app.route('/backup')
+def backup():
+    # 运行备份脚本
+    subprocess.run(['python', 'backup.py'])  # 替换为实际的备份脚本路径
+    return redirect(url_for('index'))  # 运行后重定向回首页
 
-@register_handler('添加引用')
-def handle_button2():
-    subprocess.run(['python', 'refadd.py'])
 
-# 其他按钮处理函数类似
+@app.route('/refadd')
+def refadd():
+    # 运行添加引用脚本
+    subprocess.run(['python', 'refadd.py'])  # 替换为实际的添加引用脚本路径
+    return redirect(url_for('index'))
+
+
+@app.route('/reflocal')
+def reflocal():
+    # 运行文档链接本地化脚本
+    subprocess.run(['python', 'reflocal.py'])  # 替换为实际的链接本地化脚本路径
+    return redirect(url_for('index'))
+
+
+@app.route('/notes')
+def notes():
+    # 运行小记输出脚本
+    subprocess.run(['python', 'notes.py'])  # 替换为实际的小记输出脚本路径
+    return redirect(url_for('index'))
+
+
+@app.route('/delete')
+def delete():
+    # 运行删除导出脚本
+    subprocess.run(['python', 'delete.py'])  # 替换为实际的删除导出脚本路径
+    return redirect(url_for('index'))
+
+
+@app.route('/filelocal')
+def filelocal():
+    # 运行资源本地化脚本
+    subprocess.run(['python', 'filelocal.py'])  # 替换为实际的资源本地化脚本路径
+    return redirect(url_for('index'))
+
+
+@app.route('/archives')
+def archives():
+    # 运行压缩导出脚本
+    subprocess.run(['python', 'archives.py'])  # 替换为实际的压缩导出脚本路径
+    return redirect(url_for('index'))
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
