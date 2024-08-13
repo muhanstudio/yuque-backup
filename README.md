@@ -11,3 +11,7 @@ backup.py
 ## 添加引用(适用于转移文档)
 
 运行ref.py
+
+## 文档链接本地化
+
+运行reflocal.py
